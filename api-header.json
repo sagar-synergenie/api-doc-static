@@ -1,0 +1,418 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a Heroic Business Portal API. For this, you can use `api-key` to test the authorization filters.",
+    "version": "1.0.0",
+    "title": "Business Portal API's",
+    "termsOfService": "https://business.heroic.com/terms",
+    "contact": {
+      "email": "support@heroic.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "api.business.heroic.com",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "breachedaccount",
+      "description": "Getting all breaches for an account."
+    },
+    {
+      "name": "breaches",
+      "description": "Getting all breached sites in the system."
+    },
+    {
+      "name": "dataclasses",
+      "description": "Getting all dataclasses in the system."
+    },
+    {
+      "name": "search",
+      "description": "Getting all private breach data in the system."
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/breachedaccount": {
+      "get": {
+        "tags": [
+          "breachedaccount"
+        ],
+        "summary": "Getting breaches for an account",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Account Type should be from following email, emaildomain, phonenumber, username or ipaddress",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "description": "Account value as per selected account type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "truncateResponse",
+            "in": "query",
+            "description": "Truncate Search Response, value should be true/false if you want to pass it",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "includeUnverified",
+            "in": "query",
+            "description": "Include Unverified data in Search Response, value should be true/false if you want to pass it",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/breaches": {
+      "get": {
+        "tags": [
+          "breaches"
+        ],
+        "summary": "Getting all breached sites in system",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Enter domain name, for eg: adobe.com",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/dataclasses": {
+      "get": {
+        "tags": [
+          "dataclasses"
+        ],
+        "summary": "Getting all data classes in the system",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/search/email": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Getting all breach account data for an email",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "description": "Getting data for an email, enter email to get the data.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/search/emaildomain": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Getting all breach account data for an emaildomain, enter emaildomain to get the data.",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "description": "Getting data for an emaildomain",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/search/phonenumber": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Getting all breach account data for a phone number, enter phone number to get the data.",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "description": "Getting data for a phone number",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/search/username": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Getting all breach account data for an username, enter username to get the data.",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "description": "Getting data for an username",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    },
+    "/search/ipaddress": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Getting all breach account data for an ipaddress, enter ipaddress to get the data.",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api-key",
+            "in": "header",
+            "description": "Authentication API Token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "account",
+            "in": "query",
+            "description": "Getting data for an ipaddress",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Database Error"
+          },
+          "422": {
+            "description": "Validation Error"
+          },
+          "405": {
+            "description": "Invalid input"
+          },
+          "403": {
+            "description": "Invalid authentication credentials"
+          }
+        }
+      }
+    }
+  }
+}
