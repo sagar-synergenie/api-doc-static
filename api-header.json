@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "This is a Heroic Business Portal API. For this, you can use `api-key` to test the authorization filters.",
+    "description": "This is a HEROIC Business Portal API. For this, you can use `api-key` to test the authorization filters.",
     "version": "1.0.0",
     "title": "Business Portal API's",
     "termsOfService": "https://business.heroic.com/terms",
@@ -13,7 +13,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "api.business.synergenie.com",
+  "host": "api.business.heroic.com",
   "basePath": "/api/v1",
   "tags": [
     {
