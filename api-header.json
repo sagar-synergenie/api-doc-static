@@ -3,7 +3,7 @@
   "info": {
     "description": "This is a HEROIC Business Portal API. For this, you can use `api-key` to test the authorization filters.",
     "version": "1.0.0",
-    "title": "Business Portal API's",
+    "title": "HEROIC Business Portal API's",
     "termsOfService": "https://business.heroic.com/terms",
     "contact": {
       "email": "support@heroic.com"
